@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	_ "encoding/json"
 	"fmt"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 	"log"
 	"os"
 	"os/user"
@@ -73,7 +73,7 @@ func printOutput(config *Config) {
 
 func main() {
 	app := &cli.App{
-		Commands: []cli.Command{
+		Commands: []*cli.Command{
 			{
 				Name:    "load",
 				Aliases: []string{"l"},
@@ -95,11 +95,15 @@ func main() {
 				},
 			},
 			{
-				Name: "new",
+				Name:      "new",
+				Usage:     "Add a config",
+				UsageText: "new [command options] <ip> <port> (<ip> and <port> are optional)",
 				Flags: []cli.Flag{
-					cli.StringFlag{
-						Name:  "name",
-						Value: "",
+					&cli.StringFlag{
+						Name:    "name",
+						Aliases: []string{"n"},
+						Value:   "",
+						Usage:   "The name of the config",
 					},
 				},
 				Action: func(cCtx *cli.Context) error {
