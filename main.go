@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	_ "encoding/json"
 	"fmt"
 	"github.com/urfave/cli/v2"
 	"log"
