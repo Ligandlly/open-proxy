@@ -1,4 +1,4 @@
-module open-proxy
+module github.com/Ligandlly/open-proxy
 
 go 1.20
 
